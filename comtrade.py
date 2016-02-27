@@ -25,6 +25,7 @@ class Analog_signal:
     def getRValue(self, id):
         return self.values[id] * self.a + self.b
     
+	
 class Binary_signal:
     
     def __init__(self,num=0,name=""):
@@ -33,8 +34,8 @@ class Binary_signal:
         self.nState = 0
         self.values = []
 
+		
 class Comtrade_config_file:
-    
     def __init__(self,file=None):
         self.objectName = "MyStation"
         self.objectNumber = 0
@@ -151,8 +152,8 @@ class Comtrade_config_file:
         f.writelines(cfg)
         f.close()
 
+		
 class Comtrade_dat_file:
-    
     def __init__(self,file=None):
         self.localTimeList = []
         self.globalTimeList = []
@@ -204,8 +205,8 @@ class Comtrade_dat_file:
         f.writelines(dat)
         f.close()
         
+		
 class Comtrade:
-    
     def __init__(self):
         #object info
         self.objectName = "MyStation"
@@ -351,22 +352,14 @@ class Comtrade:
         for i in range(self.countB):
             self.listB[i].num = i
        
-def test():
-    from time import time
-    T1 = time()
-    com = Comtrade()
-    com.readFile("11.cfg") 
-    print(time()-T1)
-
-def makecsv(base, fase, r):
-    import csv
-    c = Comtrade()
-    c.readFile("11.cfg")
-    f = open('eggs2.csv', 'wt')
-    w = csv.writer(f)
-    for i in r:
-        a = w.writerow((c.listA[base].getRValue(i), c.listA[fase].getRValue(i),))
-    f.close()
-        
-if __name__ == "__main__":
-    test()
+#def exemple():
+    # com = Comtrade()
+    # com.readFile("11.cfg") 
+	# List of analog signals com.listA
+	# com.listA[index] >>  object(Analog_signal)
+	# com.listA[index].getRValue(index) >> value of the signal in the 'index' offset 
+	# List of binary signals com.listB
+	# com.listB[index] >>  object(Binary_signal)
+	# com.listA[index].values[index] >> value of the signal in the 'index' offset
+	# Other values see at Comtrade: def __init__
+    
